@@ -8,6 +8,7 @@
 
     <title>DreamShop</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -46,7 +47,13 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a class="nav-link" href="/backend/products">Товары</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/backend/categories">Категории</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/backend/details">Характеристики</a>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -78,5 +85,7 @@
             </div>
         </main>
     </div>
+
+    @yield('scripts')
 </body>
 </html>

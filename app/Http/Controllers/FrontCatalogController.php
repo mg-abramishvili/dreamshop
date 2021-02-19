@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Detail;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class FrontCatalogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class ProductController extends Controller
         })->get();
 
         //dd($filters);
-        return view('backend.products.index', compact('products', 'details'));
+        return view('frontend.catalog.index', compact('products', 'details'));
     }
 
     /**
