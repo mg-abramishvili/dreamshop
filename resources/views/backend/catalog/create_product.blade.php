@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <form action="/backend/products" method="post" enctype="multipart/form-data">
+        <form action="/backend/catalog-products" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
 
@@ -39,17 +39,16 @@
                 <div class="col-12">
                     <select name="categories[]" class="form-control" multiple>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            <option value="{{ $category->id }}" @if($category->id == $current_category) selected @endif>{{ $category->title }}</option>
                         @endforeach
                     </select>
+                    <input type="hidden" name="current_category" value="{{ $current_category }}">
                 </div>
 
-                <div class="form-group">             
-                    @include('backend.products.partials.details')
-
-                    @if($errors->has('ingredients'))
-                        {{ $errors->first('ingredients') }}
-                    @endif
+                <div class="col-12">
+                        @foreach($attributes as $attribute)
+                            <p>{{ $attribute->name }}</p>
+                        @endforeach
                 </div>
 
             </div>

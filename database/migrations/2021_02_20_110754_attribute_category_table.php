@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DetailValueTable extends Migration
+class AttributeCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class DetailValueTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_value', function (Blueprint $table) {
+        Schema::create('attribute_category', function (Blueprint $table) {
             $table->id();
-            $table->integer('detail_id');
-            $table->integer('value_id');
+            $table->integer('category_id');
+            $table->integer('attribute_id');
         });
     }
 
@@ -27,6 +27,6 @@ class DetailValueTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_value');
+        Schema::dropIfExists('attribute_category');
     }
 }

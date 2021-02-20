@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('model')->nullable();
             $table->longText('description')->nullable();
             $table->string('gallery')->nullable();
-            $table->string('oldprice')->nullable();
-            $table->string('price');
+            $table->decimal('oldprice')->nullable();
+            $table->decimal('price');
             $table->timestamps();
         });
     }

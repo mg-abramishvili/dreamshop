@@ -9,17 +9,8 @@ class Value extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'value'
-    ];
-
-    public function details()
+    public function attributes()
     {
-        return $this->belongsToMany('App\Models\Detail');
-    }
-
-    public function products()
-    {
-        return $this->belongsToMany('App\Models\Product');
+        return $this->belongsToMany('App\Models\Attribute');
     }
 }

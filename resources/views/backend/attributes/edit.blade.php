@@ -7,17 +7,17 @@
             </div>
         </div>
 
-        <form action="/backend/details/{{$detail->id}}/update" method="post" enctype="multipart/form-data">@csrf
+        <form action="/backend/attributes/{{$attribute->id}}/update" method="post" enctype="multipart/form-data">@csrf
             @method('PUT')
-            <input type="hidden" name="id" value="{{$detail->id}}">
+            <input type="hidden" name="id" value="{{$attribute->id}}">
 
             <div class="row">
 
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="title" class="font-weight-bold">Название</label>
-                        <input type="text" class="form-control" name="title" placeholder="Название" value="{{ $detail->title }}">
-                        @if ($errors->has('title'))
+                        <label for="name" class="font-weight-bold">Название</label>
+                        <input type="text" class="form-control" name="name" placeholder="Название" value="{{ $attribute->name }}">
+                        @if ($errors->has('name'))
                             <div class="alert alert-danger">
                                 Укажите название
                             </div>
@@ -33,7 +33,7 @@
 
         <div class="col-12">
 
-                    @forelse($detail->values as $value)
+                    @forelse($attribute->values as $value)
                         <p>{{ $value->value }}</p>
                     @empty
                         <p>Пусто</p>
@@ -51,8 +51,8 @@
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{ route('value.add', $detail->id) }}" method="post" enctype="multipart/form-data">@csrf
-                                        <input type="hidden" name="id" value="{{$detail->id}}">
+                                    <form action="{{ route('value.add', $attribute->id) }}" method="post" enctype="multipart/form-data">@csrf
+                                        <input type="hidden" name="id" value="{{$attribute->id}}">
                                         <input type="text" name="value" class="form-control mb-3">
                                         </div>
                                         <button type="submit" class="btn btn-lg btn-success">Добавить</button>

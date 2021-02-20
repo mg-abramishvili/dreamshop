@@ -17,7 +17,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/backend/dashboard') }}">
                     DreamShop
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -47,13 +47,10 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="/backend/products">Товары</a>
+                                <a class="nav-link" href="/backend/catalog">Каталог</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/backend/categories">Категории</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/backend/details">Характеристики</a>
+                                <a class="nav-link" href="/backend/attributes">Характеристики</a>
                             </li>
 
                             <li class="nav-item dropdown">

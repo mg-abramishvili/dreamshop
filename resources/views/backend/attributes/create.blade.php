@@ -8,15 +8,15 @@
             </div>
         </div>
 
-        <form action="/backend/details" method="post" enctype="multipart/form-data">
+        <form action="/backend/attributes" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
 
                 <div class="col-4">
                     <div class="form-group">
-                        <label for="title" class="font-weight-bold">Название</label>
-                        <input type="text" class="form-control" name="title" placeholder="Название категории">
-                        @if ($errors->has('title'))
+                        <label for="name" class="font-weight-bold">Название</label>
+                        <input type="text" class="form-control" name="name" placeholder="Название категории">
+                        @if ($errors->has('name'))
                             <div class="alert alert-danger">
                                 Укажите название
                             </div>

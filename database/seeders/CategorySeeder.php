@@ -13,17 +13,17 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'title' => 'Тестовая категория 01',
+                'title' => 'Киоски',
                 //'slug' => 'testovaya_kategoriya_01',
                 'parent_id' => NULL,
             ],
             [
-                'title' => 'Тестовая категория 02',
+                'title' => 'Софт',
                 //'slug' => 'testovaya_kategoriya_02',
                 'parent_id' => NULL,
             ],
             [
-                'title' => 'Тестовая категория 03',
+                'title' => 'Видеостены',
                 //'slug' => 'testovaya_kategoriya_03',
                 'parent_id' => NULL,
             ],

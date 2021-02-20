@@ -8,7 +8,7 @@
             </div>
         </div>
 
-        <form action="/backend/categories" method="post" enctype="multipart/form-data">
+        <form action="/backend/catalog" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
 
@@ -28,11 +28,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="title" class="font-weight-bold">Родительская категория</label>
-                        <select name="parent_id">
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
-                            @endforeach
-                        </select>
+                        <input name="parent_id" type="text" value="{{ $current_category }}">
                     </div>
                 </div>
 

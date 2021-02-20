@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DetailController;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontCatalogController;
 
 // AUTH
@@ -14,9 +16,18 @@ Auth::routes([
 ]);
 
 // DASHBOARD
-Route::get('/dashboard', function () {
-    return view('backend.dashboard.index');
-});
+Route::get('/backend/dashboard', 'App\Http\Controllers\DashboardController@index');
+
+// CATALOG (BACKEND)
+Route::get('/backend/catalog', 'App\Http\Controllers\CatalogController@index');
+Route::get('/backend/catalog/new-category/{current_category}', 'App\Http\Controllers\CatalogController@create_category');
+Route::get('/backend/catalog/category/{id}', 'App\Http\Controllers\CatalogController@show_category');
+Route::post('/backend/catalog', 'App\Http\Controllers\CatalogController@store_category');
+Route::post('/backend/catalog/update/{id}', 'App\Http\Controllers\CatalogController@update');
+Route::get('/backend/catalog/delete/{id}','App\Http\Controllers\CatalogController@delete')->middleware('auth');
+Route::post('/backend/catalog/file/{method}','App\Http\Controllers\CatalogController@file')->middleware('auth');
+Route::get('/backend/catalog/new-product/{current_category}', 'App\Http\Controllers\CatalogController@create_product');
+Route::post('/backend/catalog-products', 'App\Http\Controllers\CatalogController@store_product');
 
 // PRODUCTS (BACKEND)
 Route::get('/backend/products', 'App\Http\Controllers\ProductController@index');
@@ -36,13 +47,13 @@ Route::post('update/{id}', 'App\Http\Controllers\KeyApiController@update');
 Route::get('/backend/categories/delete/{id}','App\Http\Controllers\CategoryController@delete')->middleware('auth');
 Route::post('/backend/categories/file/{method}','App\Http\Controllers\CategoryController@file')->middleware('auth');
 
-// DETAILS (BACKEND)
-Route::get('/backend/details', 'App\Http\Controllers\DetailController@index');
-Route::get('/backend/details/new', 'App\Http\Controllers\DetailController@create');
-Route::post('/backend/details', 'App\Http\Controllers\DetailController@store');
-Route::get('/backend/details/{id}/edit', 'App\Http\Controllers\DetailController@edit')->name('detail.edit');
-Route::put('/backend/details/{id}/update', 'App\Http\Controllers\DetailController@update');
-Route::post('/backend/details/{detail}/new-value', 'App\Http\Controllers\DetailController@addValue')->name('value.add');
+// ATTRIBUTES (BACKEND)
+Route::get('/backend/attributes', 'App\Http\Controllers\AttributeController@index');
+Route::get('/backend/attributes/new', 'App\Http\Controllers\AttributeController@create');
+Route::post('/backend/attributes', 'App\Http\Controllers\AttributeController@store');
+Route::get('/backend/attributes/{id}/edit', 'App\Http\Controllers\AttributeController@edit')->name('attribute.edit');
+Route::put('/backend/attributes/{id}/update', 'App\Http\Controllers\AttributeController@update');
+Route::post('/backend/attributes/{attribute}/new-value', 'App\Http\Controllers\AttributeController@addValue')->name('value.add');
 
 // CATALOG (FRONTEND)
 Route::get('/catalog', 'App\Http\Controllers\FrontCatalogController@index');

@@ -5,21 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Detail extends Model
+class Attribute extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'code', 'title'
-    ];
 
     public function values()
     {
         return $this->belongsToMany('App\Models\Value');
     }
 
-    public function products()
+    public function categories()
     {
-        return $this->belongsToMany('App\Models\Product')->withPivot('value');
+        return $this->belongsToMany('App\Models\Category');
     }
 }

@@ -4,43 +4,35 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Detail;
 
 use Livewire\Component;
 
 class CatalogFilter extends Component
 {
-    public $diagonal_filter;
-    public $ssd_filter;
+    public $minPrice = 0;
+    public $maxPrice = 9999900;
 
     public function render()
     {
-        $diagonal_filter = $this->diagonal_filter;
-        $ssd_filter = $this->ssd_filter;
+        $minPrice = $this->minPrice;
+        $maxPrice = $this->maxPrice;
 
-        $filters = Detail::where('filter', 'y')->pluck('code');
-
-        $details = Detail::where(function($query) use ($filters) {
-            $query->where('code');
-            foreach ($filters as $filter) {
-                $query->orWhere('code', $filter);
-            }
-        })->get();
-
-        $products = Product::with('details')
-        ->whereHas('details', function($query) use ($filters, $diagonal_filter, $ssd_filter) {
+        $products = Product
+        /*->whereHas('details', function($query) use ($filters, $diagonals, $ssds) {
                 $query->where('code', 'diagonal');
-                $query->where('value', '42"');
+                $query->where('value', '32"');
+                $query->orwhere('value', '42"');
         })
-        ->whereHas('details', function($query) use ($filters, $diagonal_filter, $ssd_filter) {
+        ->whereHas('details', function($query) use ($filters, $diagonals, $ssds) {
             $query->where('code', 'ssd');
-            $query->where('value', '256Gb');
-        })
+            $query->where('value', '128Gb');
+            $query->orwhere('value', '256Gb');
+        })*/
+        ::whereBetween('price',array($minPrice,$maxPrice))
         ->get();
 
         return view('livewire.catalog-filter', [
             'products' => $products,
-            'details' => $details,
         ]);
     }
 }
