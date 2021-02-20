@@ -46,9 +46,9 @@
                 </div>
 
                 <div class="col-12">
-                        @foreach($attributes as $attribute)
-                            <p>{{ $attribute->name }}</p>
-                        @endforeach
+                    @foreach($attributes as $attribute)
+                        <p>{{ $attribute->name }}</p>
+                    @endforeach
                 </div>
 
             </div>

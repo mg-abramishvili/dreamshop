@@ -3,7 +3,7 @@
 
     <div class="row mb-3">
         <div class="col-12 col-md-6">
-            <h1 calss="mt-0 mb-0">Каталог</h1>
+            <h1 calss="mt-0 mb-0">{{ $category->title }}</h1>
         </div>
         <div class="col-12 col-md-6 text-right">
             <a href="/backend/catalog/new-product/{{ $category->id }}" class="btn btn-primary">Добавить товар</a>

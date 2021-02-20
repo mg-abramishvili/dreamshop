@@ -50,7 +50,9 @@ class CatalogController extends Controller
     {
         $categories = Category::all();
         $current_category = $current_category;
-        $attributes = Attribute::with('categories')->whereHas('categories')->get();
+        $attributes = Attribute::with('categories')->whereHas('categories', function($query) use($current_category) {
+            $query->where('category_id', $current_category);
+        })->get();
 
         return view('backend.catalog.create_product', compact('categories', 'attributes', 'current_category'));
     }
