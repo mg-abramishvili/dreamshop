@@ -28,24 +28,8 @@ Route::get('/backend/catalog/delete/{id}','App\Http\Controllers\CatalogControlle
 Route::post('/backend/catalog/file/{method}','App\Http\Controllers\CatalogController@file')->middleware('auth');
 Route::get('/backend/catalog/new-product/{current_category}', 'App\Http\Controllers\CatalogController@create_product');
 Route::post('/backend/catalog-products', 'App\Http\Controllers\CatalogController@store_product');
-
-// PRODUCTS (BACKEND)
-Route::get('/backend/products', 'App\Http\Controllers\ProductController@index');
-Route::get('/backend/products/new', 'App\Http\Controllers\ProductController@create');
-Route::get('/backend/product/{id}', 'App\Http\Controllers\ProductController@show');
-Route::post('/backend/products', 'App\Http\Controllers\ProductController@store');
-Route::post('update/{id}', 'App\Http\Controllers\ProductController@update');
-Route::get('/backend/products/delete/{id}','App\Http\Controllers\ProductController@delete')->middleware('auth');
-Route::post('/backend/products/file/{method}','App\Http\Controllers\ProductController@file')->middleware('auth');
-
-// CATEGORIES (BACKEND)
-Route::get('/backend/categories', 'App\Http\Controllers\CategoryController@index');
-Route::get('/backend/categories/new', 'App\Http\Controllers\CategoryController@create');
-Route::get('/backend/category/{id}', 'App\Http\Controllers\CategoryController@show');
-Route::post('/backend/categories', 'App\Http\Controllers\CategoryController@store');
-Route::post('update/{id}', 'App\Http\Controllers\KeyApiController@update');
-Route::get('/backend/categories/delete/{id}','App\Http\Controllers\CategoryController@delete')->middleware('auth');
-Route::post('/backend/categories/file/{method}','App\Http\Controllers\CategoryController@file')->middleware('auth');
+Route::get('/backend/catalog/product/{id}/edit', 'App\Http\Controllers\CatalogController@edit_product')->name('product.edit');
+Route::post('/backend/catalog/product/attribute/{id}/new', 'App\Http\Controllers\CatalogController@add_attribute')->name('product.attribute.new');
 
 // ATTRIBUTES (BACKEND)
 Route::get('/backend/attributes', 'App\Http\Controllers\AttributeController@index');

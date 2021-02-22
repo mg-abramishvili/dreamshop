@@ -45,13 +45,11 @@
                     <input type="hidden" name="current_category" value="{{ $current_category }}">
                 </div>
 
-                <div class="col-12">
-                    @foreach($attributes as $attribute)
-                        <p>{{ $attribute->name }}</p>
-                    @endforeach
-                </div>
-
             </div>
+
+            @foreach($attributes as $attribute)
+                <input name="attributes[{{ $attribute->id }}]" type="text" class="form-control" placeholder="{{ $attribute->name }}">
+            @endforeach
 
             <button type="submit" class="btn btn-lg btn-success">Сохранить</button>
         </form>

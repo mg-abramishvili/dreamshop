@@ -31,7 +31,7 @@
             <table class="table table-bordered table-hover">
                 @forelse($products as $product)
                     <tr>
-                        <td>{{ $product->title }}</td>
+                        <td><a href="{{ route('product.edit', [$product->id]) }}">{{ $product->title }}</a></td>
                     </tr>
                 @empty
                     <tr>

@@ -9,13 +9,13 @@ class Attribute extends Model
 {
     use HasFactory;
 
-    public function values()
-    {
-        return $this->belongsToMany('App\Models\Value');
-    }
-
     public function categories()
     {
         return $this->belongsToMany('App\Models\Category');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Product')->withPivot(['value_id', 'value']);
     }
 }

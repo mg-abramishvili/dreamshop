@@ -14,8 +14,8 @@ class Product extends Model
         return $this->belongsToMany('App\Models\Category');
     }
 
-    public function values()
+    public function attributes()
     {
-        return $this->belongsToMany('App\Models\Value')->withPivot('attribute_id');
+        return $this->belongsToMany('App\Models\Attribute')->withPivot(['value_id', 'value']);
     }
 }
