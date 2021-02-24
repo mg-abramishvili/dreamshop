@@ -26,11 +26,9 @@ class FrontCatalogController extends Controller
         foreach($attributes_filters as $attribute) {
             if($request->has($attribute)) {
                 $products->whereHas('attributes', function($query) use($request, $attribute) {
+                    $attrs = explode('|', $request->$attribute);
                     $query->where('code', $attribute);
-                    $query->where('value');
-                    foreach($request->$attribute as $attr) {
-                        $query->orWhere('value', $attr);
-                    }
+                    $query->whereIn('value', $attrs);
                 });
             }
         }

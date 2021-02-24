@@ -22,7 +22,7 @@
                         @foreach($attribute->products as $attr)
                             <div class="form-group mb-0">
                                 <label for="{{ $attr->pivot->value_id }}">
-                                    <input type="checkbox" name="{{ $attribute->code }}[]" id="{{ $attr->pivot->value_id }}" value="{{ $attr->pivot->value }}">
+                                    <input type="checkbox" name="{{ $attribute->code }}" id="{{ $attr->pivot->value_id }}" value="{{ $attr->pivot->value }}" @foreach(explode('|', request()->get($attribute->code)) as $ac) @if($ac == $attr->pivot->value) checked @endif @endforeach>
                                     {{ $attr->pivot->value }}
                                 </label>
                             </div>
