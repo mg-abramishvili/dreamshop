@@ -17,7 +17,7 @@
                 </div>-->
                 @foreach($attributes as $attribute)
                     <div class="form-group mb-4">
-                        {{ $attribute->name }}
+                        <span class="font-weight-bold">{{ $attribute->name }}</span>
 
                         @foreach($attribute->products as $attr)
                             <div class="form-group mb-0">
