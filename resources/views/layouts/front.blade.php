@@ -11,7 +11,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-    @livewireStyles
 </head>
 <body>
 
@@ -19,6 +18,5 @@
         @yield('content')
     </div>
 
-    @livewireScripts
 </body>
 </html>
