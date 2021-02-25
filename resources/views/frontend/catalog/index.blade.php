@@ -8,7 +8,7 @@
                 <div class="form-group mb-4">
                     <span class="font-weight-bold">{{ $attribute->name }}</span>
 
-                    @foreach($attribute->products as $attr)
+                    @foreach($attribute->products->unique('pivot.value') as $attr)
                         <div class="form-group mb-0">
                             <label for="{{ $attr->pivot->value_id }}">
                                 <input type="checkbox" name="{{ $attribute->code }}" id="{{ $attr->pivot->value_id }}" value="{{ $attr->pivot->value }}" @foreach(explode('|', request()->get($attribute->code)) as $ac) @if($ac == $attr->pivot->value) checked @endif @endforeach>
